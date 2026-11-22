@@ -31,7 +31,7 @@
 },
 {
 "name": "Build Debug APK",
-"run": "if [ -f LittleMelodyPiano_Android/settings.gradle.kts ]; then cd LittleMelodyPiano_Android; fi; gradle assembleDebug && cp app/build/outputs/apk/debug/*.apk $GITHUB_WORKSPACE/LittleMelodyPiano.apk"
+"run": "for z in .zip; do if [ -f "$z" ]; then unzip -o "$z\"; fi; done\nPROJ_FILE=$(find . -name settings.gradle.kts \vert{} head -n 1)\nif [ -z "$PROJ_FILE\" ]; then\n  echo \"ERROR: Android project files not found! Files in repo:\"\n  ls -la\n  exit 1\nfi\nPROJ_DIR=$(dirname "$PROJ_FILE")\necho "Building project in: $PROJ_DIR"\ncd "$PROJ_DIR"\ngradle assembleDebug\ncp app/build/outputs/apk/debug/.apk "$GITHUB_WORKSPACE/LittleMelodyPiano.apk""
 },
 {
 "name": "Upload APK",
