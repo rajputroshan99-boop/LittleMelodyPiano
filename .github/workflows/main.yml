@@ -1,9 +1,4 @@
-GitHub Actions workflow to compile the LittleMelodyPiano Android project into a Debug APK
-
 name: Build Android APK
-
-Trigger the build automatically on pushes to main/master, or manually from the Actions tab
-
 on:
 push:
 branches:
